@@ -1,0 +1,91 @@
+form {
+    max-width: 800px;
+    border: 1px solid #e0e0e0;
+    margin: 0 auto;
+    padding: 1em;
+}
+
+.ui {
+    border: none;
+    display: flex;
+    align-items: center;
+    margin-bottom: 1em;
+}
+
+label {
+    flex:0 0 14em;
+}
+
+input {
+    margin: 0;
+    font-size: 1.25em;
+    max-width: 100%;
+    width: 100%;
+    outline: 0;
+    -webkit-tap-highlight-color: rgba(255,255,255,0);
+    text-align: left;
+    line-height: 1.21428571em;
+    font-family: Lato,'Helvetica Neue',Arial,Helvetica,sans-serif;
+    padding: .67857143em 1em;
+    background: #fff;
+    border: 1px solid rgba(34,36,38,.15);
+    color: rgba(0,0,0,.87);
+    border-radius: .28571429rem;
+    -webkit-transition: box-shadow .1s ease,border-color .1s ease;
+    transition: box-shadow .1s ease,border-color .1s ease;
+    box-shadow: none;
+
+}
+
+.form-group{
+    &.field-err {
+        input {
+            border-color: red;
+        }
+    }
+}
+
+.selectionBox {
+   
+        display: flex;
+    align-items: center;
+    & > label {
+            display: flex;
+    align-items: center;
+    cursor: pointer;
+    flex: 0 1 auto;
+    margin-right: 20px;
+    input {
+            flex: 0 0 auto;
+    width: auto;
+    margin-right: 5px;
+    }
+    }
+}
+
+.field-wrap{
+    flex: 1 1 auto;
+    .help-text {
+        color: #979797;
+    font-weight: 100;
+    font-style: italic;
+    font-size: 0.85em;
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 0.5em;
+    }
+}
+
+button {
+        background: tomato;
+    border: none;
+    color: white;
+    font-size: 1.05em;
+    padding: 0.5em 1em;
+    text-transform: uppercase;
+    font-weight: 100;
+    &[disabled] {
+        background: rgba(0,0,0,0.4);
+    opacity: 0.75;
+    }
+}

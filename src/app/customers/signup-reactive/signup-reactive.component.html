@@ -1,0 +1,111 @@
+<h3>Reactive Signup Form</h3>
+<form 
+  [formGroup]="customerForm"
+  (ngSubmit)="onFormSubmit()"> 
+
+  <div class="form-group"
+    [ngClass]="{ 'field-err': ( customerForm.get('firstName').touched) && !customerForm.get('firstName').valid }">
+    
+    
+        <div class="ui">
+      <label for="firstName">First Name</label>
+      <div class="field-wrap">
+        <input id="firstName" type="text"
+          formControlName="firstName">
+
+          <div class="help-text"
+      *ngIf=" ( customerForm.get('firstName').touched) && !customerForm.get('firstName').valid ">
+        <div *ngIf="customerForm.get('firstName').errors?.required">
+          This Field is Required
+        </div>
+        <div *ngIf="customerForm.get('firstName').errors?.minlength">
+          Minnimum Character Length is 3
+        </div>
+      </div>
+      </div>
+      
+    </div>
+    
+  </div>
+
+  <div class="form-group"
+  [ngClass]="{ 'field-err': ( customerForm.get('lastName').touched || customerForm.get('lastName').dirty) && !customerForm.get('lastName').valid }">
+    <div class="ui">
+      <label for="lastName">Last Name</label>
+      <div class="field-wrap">
+      <input id="lastName" type="text"
+      formControlName="lastName">
+       <div class="help-text"
+      *ngIf=" ( customerForm.get('lastName').touched || customerForm.get('lastName').dirty) && !customerForm.get('lastName').valid ">
+        <div *ngIf="customerForm.get('lastName').errors?.required">
+          This Field is Required
+        </div>
+        <div *ngIf="customerForm.get('lastName').errors?.maxlength">
+          Max Character is 15
+        </div>
+      </div>
+      </div>
+        </div>
+  </div>
+
+  <div class="form-group">
+    <div class="ui">
+      <label for="firstName">Email</label>
+      <input id="firstName" type="text"
+      formControlName="email">
+        </div>
+  </div>
+
+
+  <div class="form-group"
+    [ngClass]="{
+      'field-err' : !customerForm.get('phone').valid
+    }">
+    <div class="field-wrap">
+      <div class="ui">
+        <label for="phone">Phone</label>
+        <input id="phone" type="tel" placeholder="Phone"
+          formControlName="phone">
+          <div class="help-text"
+            *ngIf="customerForm.get('phone').errors">
+              <div *ngIf="customerForm.get('phone').errors?.required"> This Field is Required</div>
+          </div>
+        </div>
+    </div>
+  </div>
+
+
+  <div class="form-group">
+    <div class="ui">
+      <label for="firstName">Send Notifications</label>
+      <div class="selectionBox">
+          <label for="notif_email" (click)="setNotification('email')">
+          <input id="notif_email" type="radio" value="email"
+            formControlName="notification">Email
+          </label>
+          <label for="notif_text" (click)="setNotification('text')">
+          <input id="notif_text" type="radio" value="text"
+            formControlName="notification">Text
+          </label>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group">
+     <div class="ui">
+      <label for="firstName">Send me Your Catalog</label>
+      <input id="firstName" type="checkbox"
+      formControlName="sendCatalog">
+      </div>
+  </div>
+
+  <button type="submit" [disabled]="!customerForm.valid">Sign up</button>
+  <button type="submit" (click)="loadTestData()">Dump Test Data</button> 
+</form>
+
+<pre>
+  <div>Dirty: {{ customerForm.dirty }}</div>
+  <div>Touched: {{ customerForm.touched }}</div>
+  <div>valid: {{ customerForm.valid }}</div>
+  <div>VALUE:{{ customerForm.value | json }} </div>
+</pre>

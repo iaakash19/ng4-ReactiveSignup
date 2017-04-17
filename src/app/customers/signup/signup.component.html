@@ -1,0 +1,48 @@
+<form 
+  #custSignupForm="ngForm"
+  (ngSubmit)="onFormSubmit(custSignupForm)"> 
+
+  <div class="form-group">
+    <div class="ui">
+      <label for="firstName">First Name</label>
+      <input id="firstName" type="text"
+        required
+        minlength="3"
+        name="firstName"
+        [(ngModel)]="customer.firstName"
+        #firstNameRef="ngModel">
+      </div>
+  </div>
+
+  <div class="form-group">
+    <div class="ui">
+      <label for="lastName">Last Name</label>
+      <input id="lastName" type="text"
+        name="lastName"
+        [(ngModel)]="customer.lastName"
+        #lastNameRef="ngModel">
+        </div>
+  </div>
+
+  <div class="form-group">
+    <div class="ui">
+      <label for="firstName">Email</label>
+      <input id="firstName" type="text"
+        name="email"
+        [(ngModel)]="customer.email"
+        #email="ngModel">
+        </div>
+  </div>
+
+  <div class="form-group">
+
+  </div>
+
+  <button type="submit" [disabled]="!custSignupForm.valid">Sign up</button>
+</form>
+
+<pre>
+  <div>Dirty: {{ custSignupForm.dirty }}</div>
+  <div>Touched: {{ custSignupForm.touched }}</div>
+  <div>valid: {{ custSignupForm.valid }}</div>
+</pre>
